@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:summer_iti_http/Weather_provider.dart';
+import 'package:summer_iti_http/city_provider.dart';
+import 'city_provider.dart';
 import 'home.dart';
 
 void main() {
@@ -15,7 +18,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MultiProvider(providers: [
+ChangeNotifierProvider<WeatherProvider>(create: (_)=>WeatherProvider()),
+ChangeNotifierProvider<City>(create: (_)=>City()),
+
+      ],
+      
+      child: MyHomePage(),
+      ),
     );
   }
 }
